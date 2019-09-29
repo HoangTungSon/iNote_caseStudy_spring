@@ -39,6 +39,12 @@ public class NoteController {
         return new ModelAndView("/iNote/list", "notes", notes);
     }
 
+    @GetMapping("/view-note/{id}")
+    public ModelAndView viewNote(@PathVariable("id") Long id){
+        Note note = noteService.findById(id);
+        return new ModelAndView("/iNote/view", "note", note);
+    }
+
     @GetMapping("/create-note")
     public ModelAndView createNoteForm() {
         return new ModelAndView("/iNote/create", "note", new Note());

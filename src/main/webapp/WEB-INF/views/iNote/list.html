@@ -3,11 +3,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Note list</title>
+    <title th:text="#{note.list}"></title>
 </head>
 <body>
-<a href="/create-note">Create a new note</a>
-<h1>Notes</h1>
+<a href="/create-note" th:text="#{create.title}"></a>
+<h1 th:text="#{note.list}"></h1>
 <form>
     Search by title:
     <input name="s" type="text"/>
@@ -15,15 +15,15 @@
 </form><br/>
 <table border="1">
     <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Note Type</th>
+        <th th:text="#{note.title}"></th>
+        <th th:text="#{note.content}"></th>
+        <th th:text="#{note.type}"></th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
     <th:block th:each="note : ${notes}">
         <tr>
-            <td th:text="${note.title}"></td>
+            <td><a th:href="@{/view-note/__${note.id}__}" th:text="${note.title}"></a></td>
             <td th:text="${note.content}"></td>
             <td th:text="${note.noteType.name}"></td>
             <td><a th:href="@{/edit-note/__${note.id}__ }">Edit</a></td>
@@ -32,8 +32,8 @@
     </th:block>
 </table>
 <div>
-    <a th:href="@{'/customers'(page=${notes.number - 1})}" th:if="${notes.hasPrevious()}">Previous</a>
+    <a th:href="@{'/notes'(page=${notes.number - 1})}" th:if="${notes.hasPrevious()}">Previous</a>
     <span th:text="${notes.number + 1}"></span>/<span th:text="${notes.totalPages}"></span>
-    <a th:href="@{'/customers'(page=${notes.number + 1})}" th:if="${notes.hasNext()}">Next</a>
+    <a th:href="@{'/notes'(page=${notes.number + 1})}" th:if="${notes.hasNext()}">Next</a>
 </div>
 </body>

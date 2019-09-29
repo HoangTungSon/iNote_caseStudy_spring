@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create note</title>
+    <title th:text="#{create.title}"></title>
 </head>
 <body>
-<h1>Create note</h1>
+<h1 th:text="#{create.title}"></h1>
 <p>
-    <a href="/notes">Note list</a>
+    <a href="/notes" th:text="#{note.list}"></a>
 </p>
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
@@ -15,15 +15,15 @@
 <form th:action="@{/create-note}" th:object="${note}" method="post">
     <table>
         <tr>
-            <td>Title:</td>
+            <td th:text="#{note.title}"></td>
             <td><input type="text" th:field="*{title}"/></td>
         </tr>
         <tr>
-            <td>Content:</td>
+            <td th:text="#{note.content}"></td>
             <td><input type="text" th:field="*{content}"/></td>
         </tr>
         <tr>
-            <td>Note type:</td>
+            <td th:text="#{note.type}"></td>
             <td>
                 <select th:field="*{noteType}">
                     <option th:each="n : ${noteTypes}" th:value="${n.id}" th:text="${n.name}"></option>
@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Create customer"></td>
+            <td><input type="submit" value="Create a new note"></td>
         </tr>
     </table>
 </form>

@@ -2,27 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Delete customer</title>
+    <title th:text="#{delete.title}"></title>
 </head>
 <body>
-<h1>Delete customer</h1>
+<h1 th:text="#{delete.title}"></h1>
 <h2>Are you sure?</h2>
 <p>
-    <a href="/notes">Customer list</a>
+    <a href="/notes" th:text="#{note.list}"></a>
 </p>
 <form th:action="@{/delete-note}" th:object="${note}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <table>
         <tr>
-            <td>First name:</td>
+            <td th:text="#{note.title}"></td>
             <td th:text="${note.title}"></td>
         </tr>
         <tr>
-            <td>Last name:</td>
+            <td th:text="#{note.content}"></td>
             <td th:text="${note.content}"></td>
         </tr>
         <tr>
-            <td>Last name:</td>
+            <td th:text="#{note.type}"></td>
             <td th:text="${note.noteType.name}"></td>
         </tr>
         <tr>

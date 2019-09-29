@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit customer</title>
+    <title th:text="#{edit.title}"></title>
 </head>
 <body>
-<h1>Edit customer</h1>
+<h1 th:text="#{edit.title}"></h1>
 <p>
-    <a href="/notes">Customer list</a>
+    <a href="/notes" th:text="#{note.list}"></a>
 </p>
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
@@ -16,15 +16,15 @@
     <input th:type="hidden" name="id" th:field="*{id}">
     <table>
         <tr>
-            <td>First name:</td>
+            <td th:text="#{note.title}"></td>
             <td><input type="text" th:field="*{title}"/></td>
         </tr>
         <tr>
-            <td>Last name:</td>
+            <td th:text="#{note.content}"></td>
             <td><input type="text" th:field="*{content}"/></td>
         </tr>
         <tr>
-            <td>Province:</td>
+            <td th:text="#{note.type}"></td>
             <td>
                 <select name="noteType">
                     <option th:each="nt : ${noteTypes}"
@@ -36,7 +36,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Update customer"></td>
+            <td><input type="submit" value="Update note"></td>
         </tr>
     </table>
 </form>
