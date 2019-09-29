@@ -12,5 +12,6 @@
   </head>
   <body>
   <a href="/notes">Note List</a> || <a href="/types">Note Type List</a>
+  <a href="/login">Login</a>
   </body>
 </html>
